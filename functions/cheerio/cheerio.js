@@ -17,7 +17,6 @@ exports.handler = async (event, context) => {
     } else {
           burnBan = "false";
     }
-    console.log('burnText', burnText)
     return {
       statusCode: 200,
       body: JSON.stringify({

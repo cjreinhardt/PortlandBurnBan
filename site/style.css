@@ -1,0 +1,59 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+#main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 2em;
+}
+
+a {
+  color: white;
+}
+
+h1 {
+  font-size: 4em;
+  font-family: Helvetica, sans-serif;
+}
+
+.burnBanYes {
+  background-color: rgb(246, 62, 62);
+  color: white;
+}
+
+.burnBanNo {
+  background-color: rgb(62, 209, 246);
+  color: white;
+}
+
+#loader {
+  border: 6px solid #f3f3f3;
+  /* Light grey */
+  border-top: 6px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  animation: spin 2s linear infinite;
+  text-align: center;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top:1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

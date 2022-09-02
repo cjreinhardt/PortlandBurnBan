@@ -1,70 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Is there a burn ban in Portland, Oregon right now?</title>
-    <style>
-html, body {
-  height:100%;
-  margin:0;
-}
 
-#main {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  font-family:Georgia,serif;
-  font-size:2em;
-}
-a{
-  color:white;
-}
-h1{
-  font-size:4em;
-  font-family:Helvetica,sans-serif;
-}
-.burnBanYes{
-background-color:rgb(246, 62, 62);
-color:white;
-}
-.burnBanNo{
-background-color: rgb(62, 209, 246);
-color:white;
-}
-.burnBanNo{
+<head>
+  <meta charset="utf-8">
+  <title>Is there a burn ban in Portland, Oregon right now?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-}
-    </style>
-  </head>
-  <body>
-<div id="main">
+<body>
+  <div id="main">
     <em>Is there a burn ban in Portland, Oregon right now?</em>
+    <div id="loader"></div>
     <h1 id="burnBan"></h1>
     <p id="updatedTime"></p>
     <a href="" id="moreInfo" target="_blank">More information</a>
-</div>
-<script>
-  const updatedTime = document.getElementById('updatedTime')
-  fetch('/.netlify/functions/cheerio/cheerio.js')
+  </div>
+  <script>
+    const updatedTime = document.getElementById('updatedTime')
+    fetch('/.netlify/functions/cheerio/cheerio.js')
       .then(res => res.json())
       .then((out) => {
-          console.log('Output: ', out);
-          if (out.burnBan = "true"){
-            burnBan.innerText = "Yes"
-            document.body.classList.add("burnBanYes")
-          } else if (out.burnBan = "false") {
-            burnBan.innerText = "No"
-            document.body.classList.add("burnBanNo")
-          } else {
-            burnBan.innerText = "Unknown"
-          }
-          const date = new Date(out.updatedTime)
-          updatedTime.innerText = "Updated " + date.toLocaleString()  
-          moreInfo.setAttribute("href", out.source)
-  }).catch(err => console.error(err));
+        loader.remove();
+        if (out.burnBan = "true") {
+          burnBan.innerText = "Yes"
+          document.body.classList.add("burnBanYes")
+        } else if (out.burnBan = "false") {
+          burnBan.innerText = "No"
+          document.body.classList.add("burnBanNo")
+        } else {
+          burnBan.innerText = "Unknown"
+        }
+        const date = new Date(out.updatedTime)
+        updatedTime.innerText = "Updated " + date.toLocaleString()
+        moreInfo.setAttribute("href", out.source)
+      }).catch(err => console.error(err));
   </script>
 
-  </body>
+</body>
+
 </html>

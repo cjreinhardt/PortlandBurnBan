@@ -34,6 +34,11 @@ h1 {
   color: white;
 }
 
+.burnBanYellow {
+  background-color: rgb(232, 183, 61);
+  color: white;
+}
+
 #loader {
   border: 6px solid #f3f3f3;
   /* Light grey */

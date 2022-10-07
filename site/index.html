@@ -37,7 +37,11 @@
         console.log(out.burnBan)
         if (out.burnBan == "true") {
           burnBan.innerText = "Yes"
-          document.body.classList.add("burnBanYes")
+          if (out.burnType == "yellow"){
+            document.body.classList.add("burnBanYellow")
+          } else {
+            document.body.classList.add("burnBanYes")
+          }
         } else if (out.burnBan == "false") {
           burnBan.innerText = "No"
           document.body.classList.add("burnBanNo")

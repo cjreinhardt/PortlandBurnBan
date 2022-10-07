@@ -11,17 +11,28 @@ exports.handler = async (event, context) => {
     const burnText = $("#node-37292").text();
     let burnBan = "";
     const burnPhrase = "mandatory burn ban";
+    const yellowPhrase = "voluntary wood burning restriction"
+    let banType = "";
 
-    if (burnText.includes(burnPhrase)) {
+    if (burnText.includes(burnPhrase) || burnText.includes(yellowPhrase)) {
           burnBan = "true";
     } else {
           burnBan = "false";
+    }
+
+    if (burnText.includes(burnPhrase)) {
+      burnType = "red";
+    } else if (burnText.includes(yellowPhrase)){
+      burnType = "yellow";
+    } else {
+      burnType = "none";
     }
     return {
       statusCode: 200,
       body: JSON.stringify({
         updatedTime: updatedTime,
         burnBan: burnBan,
+        burnType: burnType,
         burnText: burnText,
         source: url
       })

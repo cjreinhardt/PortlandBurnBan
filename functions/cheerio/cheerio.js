@@ -12,15 +12,16 @@ exports.handler = async (event, context) => {
     let burnBan = "";
     const burnPhrase = "mandatory burn ban";
     const yellowPhrase = "voluntary wood burning restriction"
+    const curtailPhrase = "wood burning curtailment"
     let banType = "";
 
-    if (burnText.includes(burnPhrase) || burnText.includes(yellowPhrase)) {
+    if (burnText.includes(burnPhrase) || burnText.includes(yellowPhrase) || burnText.includes(curtailPhrase)) {
           burnBan = "true";
     } else {
           burnBan = "false";
     }
 
-    if (burnText.includes(burnPhrase)) {
+    if (burnText.includes(burnPhrase) || burnText.includes(curtailPhrase)) {
       burnType = "red";
     } else if (burnText.includes(yellowPhrase)){
       burnType = "yellow";

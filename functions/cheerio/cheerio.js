@@ -8,9 +8,9 @@ exports.handler = async (event, context) => {
     const $ = cheerio.load(data)
     /* queryDOM */
     const updatedTime = $('meta[property="og:updated_time"]').attr('content');
-    const burnText = $("#node-37292").text();
+    const burnText = $("#block-multnomah-gov-theme-global-layout-mainpagecontent").text();
     let burnBan = "";
-    const burnPhrase = "mandatory burn ban";
+    const burnPhrase = "Burn Ban Active";
     const yellowPhrase = "voluntary wood burning restriction"
     const curtailPhrase = "wood burning curtailment"
     let banType = "";
